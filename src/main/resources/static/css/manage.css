@@ -1,0 +1,95 @@
+.manage-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px; /* Добавляет промежуток между секциями */
+}
+
+.manage-section {
+    width: 45%;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.manage-section h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 18px;
+}
+
+.centered-search {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.centered-search input {
+    padding: 10px 15px;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    outline: none;
+    width: 100%;
+    max-width: 300px;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.large-section {
+    width: 1100px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 400px; /* Минимальная высота до низа экрана */
+    margin-top: 20px;
+}
+
+.sub-section {
+    width: 800px; /* Ширина вычисляется как 100% минус padding и border */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #ffffff;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center; /* Центрирует элементы по вертикали */
+    box-sizing: border-box; /* Учитывает padding и border в ширину */
+}
+
+
+.sub-section img {
+    height: 40px; /* Высота изображения */
+    width: 40px; /* Ширина изображения */
+    margin-right: 20px; /* Отступ справа для изображения */
+}
+
+.sub-section .text {
+    flex-grow: 1; /* Заставляет текст занимать доступное пространство */
+}
+
+.sub-section .delete-icon {
+    width: 30px; /* Ширина иконки удаления */
+    height: 30px; /* Высота иконки удаления */
+    cursor: pointer; /* Указывает на то, что элемент кликабельный */
+}
+
+.delete-button {
+            background: none;
+            border: none;
+            padding: 0;
+            cursor: pointer;
+        }
+
+        .delete-button img {
+            width: 30px; /* Adjust size as needed */
+            height: 30px; /* Adjust size as needed */
+        }

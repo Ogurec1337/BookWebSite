@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:data-th="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supply Book Store</title>
+    <link rel="stylesheet" type="text/css" media="all"
+          href="../static/css/common.css" data-th-href="@{/css/common.css}" />
+    <link rel="stylesheet" type="text/css" media="all"
+          href="../static/css/catalog.css" data-th-href="@{/css/supply.css}" />
+</head>
+<body>
+<header>
+    <div class="logo">
+        <a href="/">
+            <img src="../images/logo.png" alt="Logo">
+        </a>
+    </div>
+    <div class="search-bar">
+        <form th:action="@{/search}" method="get">
+            <input type="text" name="pattern" placeholder="Искать книги..." required>
+            <button type="submit" class="search-button">
+                <img src="../images/glass.png" alt="Search">
+            </button>
+        </form>
+    </div>
+
+
+    <div class="header-buttons">
+        <!-- Первая картинка с выпадающим меню -->
+        <div class="dropdown">
+            <button class="header-btn">
+                <img src="../images/account.png" alt="Icon 1">
+            </button>
+            <div class="dropdown-content">
+                <div th:if="${user==null}">
+                    <p>Guest</p>
+                    <a href="/login">Login</a>
+                </div>
+                <div th:unless="${user==null}">
+                    <p th:text="${user.getUsername}"></p>
+                    <p th:text="${user.getEmail}"></p>
+                    <div th:if="${user.role == 'ROLE_ADMIN'}">
+                        <a href="/manage">manage</a>
+
+                    </div>
+                    <div th:if="${user.role == 'ROLE_SUPPLIER'}">
+                        <a href="/supply">add new Book</a>
+                    </div>
+                    <a href="/logout">logout</a>
+                </div>
+
+            </div>
+        </div>
+        <!-- Вторая картинка как ссылка -->
+        <a href="/cart" class="header-btn">
+            <img src="../images/cart.png" alt="Icon 2">
+        </a>
+    </div>
+</header>
+    <main>
+        <div class="manage-container single-section">
+            <div class="manage-section">
+                <h2>Создай книгу</h2>
+                <form th:action="@{/createBook}" th:method="post" th:object="${book}" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="book-title">Название:</label>
+                        <input type="text" id="book-title" th:field="*{name}" placeholder="Введите название книги" required>
+                        <span class="error-tooltip" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Имя книги некорректно</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="book-author">Автор:</label>
+                        <input type="text" id="book-author" th:field="*{author}" placeholder="Введите автора книги" required>
+                        <span class="error-tooltip" th:if="${#fields.hasErrors('author')}" th:errors="*{author}">Автор книги некорректен</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="book-url">URL:</label>
+                        <input type="text" id="book-url" th:field="*{url}" placeholder="Введите url книги" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="book-date">Дата издания:</label>
+                        <input type="number" id="book-date" th:field="*{year}" placeholder="Введите дату издания книги" required>
+                        <span class="error-tooltip" th:if="${#fields.hasErrors('year')}" th:errors="*{year}">Год издания книги некорректен</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="book-description">Описание:</label>
+                        <textarea id="book-description" th:field="*{description}" placeholder="Введите описание книги" required></textarea>
+                        <span class="error-tooltip" th:if="${#fields.hasErrors('description')}" th:errors="*{description}">Описание книги некорректно</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="book-price">Цена:</label>
+                        <input type="number" id="book-price" th:field="*{price}" placeholder="Введите цену книги" required>
+                        <span class="error-tooltip" th:if="${#fields.hasErrors('price')}" th:errors="*{price}">Цена книги некорректна</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="book-file">Файл:</label>
+                        <input type="file" id="book-file" name="file">
+                    </div>
+                    <button type="submit" class="create-button">Создать книгу</button>
+                </form>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>Contact us at: contact@bookstore.com</p>
+    </footer>
+</body>
+</html>

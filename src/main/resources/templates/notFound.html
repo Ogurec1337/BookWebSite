@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:data-th="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Not Found</title>
+    <link rel="stylesheet" type="text/css" media="all"
+          href="../static/css/catalog.css" data-th-href="@{/css/notFound.css}" />
+
+</head>
+<body>
+<header>
+    <div class="logo">
+        <a href="/">
+            <img src="../images/logo.png" alt="Logo">
+        </a>
+    </div>
+    <div class="search-bar">
+        <form th:action="@{/search}" method="get">
+            <input type="text" name="pattern" placeholder="Искать книги..." required>
+            <button type="submit" class="search-button">
+                <img src="../images/glass.png" alt="Search">
+            </button>
+        </form>
+    </div>
+
+
+    <div class="header-buttons">
+        <!-- Первая картинка с выпадающим меню -->
+        <div class="dropdown">
+            <button class="header-btn">
+                <img src="../images/account.png" alt="Icon 1">
+            </button>
+            <div class="dropdown-content">
+                <div th:if="${user==null}">
+                    <p>Guest</p>
+                    <a href="/login">Login</a>
+                </div>
+                <div th:unless="${user==null}">
+                    <p th:text="${user.getUsername}"></p>
+                    <p th:text="${user.getEmail}"></p>
+                    <div th:if="${user.role == 'ROLE_ADMIN'}">
+                        <a href="/manage">manage</a>
+
+                    </div>
+                    <div th:if="${user.role == 'ROLE_SUPPLIER'}">
+                        <a href="/supply">add new Book</a>
+                    </div>
+                    <a href="/logout">logout</a>
+                </div>
+
+            </div>
+        </div>
+        <!-- Вторая картинка как ссылка -->
+        <a href="/cart" class="header-btn">
+            <img src="../images/cart.png" alt="Icon 2">
+        </a>
+    </div>
+</header>
+    <main>
+        <div class="not-found-container">
+            <h1>Страница не найдена</h1>
+        </div>
+    </main>
+    <footer>
+        <p>Contact us at: contact@bookstore.com</p>
+    </footer>
+</body>
+</html>

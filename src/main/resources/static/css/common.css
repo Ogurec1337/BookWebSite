@@ -1,0 +1,134 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0 150px;
+    padding: 0;
+    background-color: #ffffff; /* Белый основной цвет */
+    color: #000000; /* Цвет текста */
+    }
+
+header {
+    display: flex;
+    margin-left: 0; /* Удаление бордюра слева */
+    margin-right: 0;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px; /* Немного уменьшена высота хедера */
+    background-color: #b19576; /* Светло кофейный цвет */
+}
+
+.logo img {
+    height: 60px; /* Немного уменьшен размер логотипа */
+}
+
+.search-bar {
+    position: relative;
+    width: 400px;
+}
+
+.search-bar form {
+    display: flex;
+}
+
+.search-bar input {
+    flex: 1;
+    padding: 10px 15px;
+    background-color: #ffffff; /* Белый цвет фона */
+    border: none;
+    border-radius: 0;
+    outline: none;
+    font-weight: bold;
+    font-size: 16px;
+    border-radius: 5px;
+}
+.search-button {
+    position: absolute;
+    right: 0;
+    top: 0;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.search-button img {
+    height: 20px;
+    width: 20px;
+}
+
+
+
+
+
+.header-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.header-btn {
+    margin-right: 20px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+     /* Круглые кнопки */
+    width: 40px;
+    height: 40px;
+    padding: 5px;
+}
+
+.header-btn img {
+    height: 35px; /* Увеличен размер иконок */
+    width: 35px; /* Увеличен размер иконок */
+     /* Сделаны круглыми */
+}
+
+.main-image img {
+    height: 60px;
+    width: 60px;
+}
+
+main {
+    padding: 20px;
+
+}
+
+.dropdown {
+    position: relative;
+}
+
+.dropdown .dropdown-content {
+    position: absolute;
+    background-color: #f9f9f9;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    display: none;
+    min-width: 160px;
+    border-radius: 5px;
+    border: 1px solid #b19576;
+    overflow: hidden;
+    left: 50%; /* Размещение по центру относительно .dropdown */
+    transform: translateX(-50%); /* Центрирование */
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+footer {
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    padding: 20px;
+    background-color: #b19576; /* Светло кофейный цвет */
+}

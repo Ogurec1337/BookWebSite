@@ -1,0 +1,74 @@
+.manage-container {
+    display: flex;
+    justify-content: center;
+}
+
+.manage-container.single-section {
+    justify-content: center; /* Центрирует единственную секцию */
+}
+
+.manage-section {
+    width: 60%; /* Увеличена ширина секции */
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Тень для секций */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.manage-section h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 18px; /* Увеличение размера шрифта заголовка */
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 15px;
+    width: 90%; /* Устанавливает ширину формы */
+    max-width: 600px; /* Ограничение максимальной ширины */
+    margin: 0 auto; /* Центрирует форму */
+}
+
+.form-group label {
+    font-size: 16px; /* Размер шрифта для меток */
+    margin-bottom: 5px;
+    margin-top: 10px; /* Отступ сверху для меток */
+}
+
+.form-group input, .form-group textarea {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    outline: none;
+    width: 100%;
+    font-size: 16px; /* Размер шрифта для полей ввода */
+    box-sizing: border-box; /* Обеспечивает включение padding и border в общую ширину */
+    margin-bottom: 10px; /* Отступ снизу для полей ввода */
+}
+
+textarea {
+    resize: vertical; /* Разрешить изменение размера только по вертикали */
+}
+
+.create-button {
+    display: inline-block;
+    padding: 12px 24px; /* Увеличенные отступы кнопки */
+    background-color: #b19576;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px; /* Размер шрифта кнопки */
+    font-weight: bold;
+    text-decoration: none;
+    margin-top: 20px;
+}
+.create-button:hover {
+    background-color: #a0835c;
+}

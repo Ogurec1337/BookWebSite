@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:data-th="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Store</title>
+    <link rel="stylesheet" type="text/css" media="all"
+          href="../static/css/common.css" data-th-href="@{/css/common.css}" />
+    <link rel="stylesheet" type="text/css" media="all"
+          href="../static/css/catalog.css" data-th-href="@{/css/catalog.css}" />
+    <script type="text/javascript"
+            data-th-src="@{js/script.js}" src="js/script.js"></script>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="/">
+                <img src="../images/logo.png" alt="Logo">
+            </a>
+        </div>
+        <div class="search-bar">
+            <form th:action="@{/search}" method="get">
+                <input type="text" name="pattern" placeholder="Искать книги..." required>
+                <button type="submit" class="search-button">
+                    <img src="../images/glass.png" alt="Search">
+                </button>
+            </form>
+        </div>
+
+
+        <div class="header-buttons">
+            <!-- Первая картинка с выпадающим меню -->
+            <div class="dropdown">
+                <button class="header-btn">
+                    <img src="../images/account.png" alt="Icon 1">
+                </button>
+                <div class="dropdown-content">
+                    <div th:if="${user==null}">
+                        <p>Guest</p>
+                        <a href="/login">Login</a>
+                    </div>
+                    <div th:unless="${user==null}">
+                        <p th:text="${user.getUsername}"></p>
+                        <p th:text="${user.getEmail}"></p>
+                        <div th:if="${user.role == 'ROLE_ADMIN'}">
+                            <a href="/manage">manage</a>
+
+                        </div>
+                        <div th:if="${user.role == 'ROLE_SUPPLIER'}">
+                            <a href="/supply">add new Book</a>
+                        </div>
+                        <a href="/logout">logout</a>
+                    </div>
+
+                </div>
+            </div>
+            <!-- Вторая картинка как ссылка -->
+            <a href="/cart" class="header-btn">
+                <img src="../images/cart.png" alt="Icon 2">
+            </a>
+        </div>
+    </header>
+    <main>
+<!--        is invisible when there was a search request-->
+        <div th:if="${pattern==null}">
+            <h1>Книги</h1>
+            <div th:if="${page==1}">
+                <div class="main-banner">
+                    <img src="../images/main.png" alt="Main Banner">
+                </div>
+            </div>
+        </div>
+        <div th:unless="${pattern==null}">
+            <h1 th:text="${'Результат поиска по запросу '+pattern}"></h1>
+        </div>
+
+        <div class="sort-section">
+            <span>Сортировать по:</span>
+            <button class="sort-option" onclick="sortBooksAndRedirect('name')" th:classappend="${sort == 'name'} ? ' active' : ''">Имени</button>
+            <button class="sort-option" onclick="sortBooksAndRedirect('year')" th:classappend="${sort == 'year'} ? ' active' : ''">Году</button>
+            <button class="sort-option" onclick="sortBooksAndRedirect('author')" th:classappend="${sort == 'author'} ? ' active' : ''">Автору</button>
+            <button class="sort-option" onclick="sortBooksAndRedirect('price')" th:classappend="${sort == 'price'} ? ' active' : ''">Цене</button>
+        </div>
+        <div class="book-catalog">
+            <div th:each="book : ${books}" class="book-item">
+                <a th:href="@{/book/{url}(url=${book.url})}">
+                    <img th:src="@{${'../images/books/' + book.url + '.png'}}" th:alt="${'Book ' + book.id}">
+                </a>
+                <h3 th:text="${book.name}">Book Title</h3>
+                <p th:text="${book.author}">Author Name</p>
+                <p th:text="'$' + ${book.price}">Price</p>
+            </div>
+        </div>
+        <div class="pagination">
+            <form th:action="@{|/|}" method="get">
+                <button class="page-option" type="submit" th:name="${'page'}" th:value="${page - 1}" th:disabled="${page == 1}">Предыдущая страница</button>
+                <button class="page-option" type="submit" th:name="${'page'}" th:value="${page + 1}" th:disabled="${(books.size()/16-page)<0}">Следующая страница</button>
+                <input type="hidden" th:name="${'sort'}" th:value="${sort}" />
+            </form>
+        </div>
+
+    </main>
+    <footer>
+        <p>Contact us at: contact@bookstore.com</p>
+    </footer>
+</body>
+</html>

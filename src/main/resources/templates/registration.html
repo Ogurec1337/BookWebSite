@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Регистрация</title>
+    <link rel="stylesheet" type="text/css" media="all"
+          href="../static/css/login_registration.css" data-th-href="@{/css/login_registration.css}" />
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <img src="../images/logo.png" alt="Logo">
+        </div>
+        <h1>РЕГИСТРАЦИЯ</h1>
+        <form th:method="POST" th:action="@{/registration}" th:object="${user}">
+            <div class="form-group">
+                <input type="text" th:field="*{username}" placeholder="Имя пользователя" required>
+                <span class="error-tooltip" th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Имя пользователя некорректно</span>
+            </div>
+            <div class="form-group">
+                <input type="email" th:field="*{email}" placeholder="Email" required>
+                <span class="error-tooltip" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email некорректен</span>
+            </div>
+            <div class="form-group">
+                <input type="password" th:field="*{password}" placeholder="Пароль" required>
+                <span class="error-tooltip" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Пароль некорректен</span>
+            </div>
+            <div class="form-group">
+                <button type="submit">Зарегистрироваться</button>
+            </div>
+        </form>
+
+        <div class="login-prompt">
+            Уже есть аккаунт? <a href="/login">Войти</a>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,79 @@
+.book-details {
+    display: flex;
+    align-items: flex-start;
+    gap: 50px;
+    margin-left: 50px; /* Смещение всей секции с книгой */
+}
+
+.book-image img {
+    max-width: 400px;
+    border-radius: 10px;
+}
+
+.book-info {
+    max-width: 600px;
+}
+
+.book-info h2 {
+    font-size: 32px; /* Увеличен размер шрифта для названия */
+    margin-bottom: 20px;
+}
+
+.book-info p {
+    font-size: 18px; /* Увеличен размер шрифта для описания */
+    margin-bottom: 10px;
+}
+
+.book-info .price {
+    font-size: 24px; /* Увеличен размер шрифта для цены */
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.add-to-cart-btn {
+    background-color: #b19576;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 15px 30px; /* Увеличен размер кнопки */
+    font-size: 18px; /* Увеличен размер шрифта кнопки */
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+
+.book-description {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #f8f8f8;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-size: 16px; /* Размер шрифта для описания */
+    color: #555; /* Немного светлее цвет для описания */
+}
+.add-to-cart-btn:hover {
+    background-color: #8b6d4f;
+}
+.add-to-cart-btn:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+.add-to-cart-btn:hover:not(:disabled) {
+    background-color: #a0835c;
+}
+
+
+.go-to-cart-btn {
+    background-color: #f0f0f0;
+    color: #b19576;
+    border: 1px solid #b19576;
+    border-radius: 20px;
+    padding: 15px 30px; /* Увеличен размер кнопки */
+    font-size: 18px; /* Увеличен размер шрифта кнопки */
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+.go-to-cart-btn:hover{
+     background-color: #f1f1f1;
+ }

@@ -1,0 +1,105 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0 150px;
+    padding: 0;
+    background-color: #ffffff; /* Белый основной цвет */
+    color: #000000; /* Цвет текста */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Обеспечивает растягивание body на всю высоту окна */
+}
+
+header {
+    display: flex;
+    margin-left: 0; /* Удаление бордюра слева */
+    margin-right: 0;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px; /* Немного уменьшена высота хедера */
+    background-color: #b19576; /* Светло кофейный цвет */
+}
+
+.logo img {
+    height: 60px; /* Немного уменьшен размер логотипа */
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+}
+
+.search-bar input {
+    padding: 10px 15px;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    outline: none;
+    width: 250px;
+    transition: width 0.3s ease-in-out;
+    height: 30px;
+    font-weight: bold; /* Более жирный текст */
+    font-size: 16px; /* Увеличен размер шрифта */
+}
+
+.search-bar input:focus {
+    width: 350px;
+}
+
+.search-button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    margin-left: -40px; /* Смещение кнопки поиска */
+}
+
+.search-button img {
+    height: 30px; /* Уменьшен размер иконок */
+    width: 30px; /* Уменьшен размер иконок */
+}
+
+.header-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.header-btn {
+    margin-right: 20px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    /* Круглые кнопки */
+    width: 40px;
+    height: 40px;
+    padding: 5px;
+}
+
+.header-btn img {
+    height: 35px; /* Увеличен размер иконок */
+    width: 35px; /* Увеличен размер иконок */
+    /* Сделаны круглыми */
+}
+
+main {
+    padding: 20px;
+    flex-grow: 1; /* Обеспечивает растягивание main при недостатке контента */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.not-found-container {
+    text-align: center;
+}
+
+.not-found-container h1 {
+    font-size: 48px; /* Большой размер шрифта для заголовка */
+    color: #b19576;
+    margin: 0;
+}
+
+footer {
+    width: 100%;
+    text-align: center;
+    padding: 20px;
+    background-color: #b19576; /* Светло кофейный цвет */
+    margin-top: 100px;
+}

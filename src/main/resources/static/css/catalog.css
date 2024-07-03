@@ -1,0 +1,96 @@
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.main-banner img {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin-bottom: 20px;
+}
+
+.sort-section {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.sort-section span {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.sort-option {
+    padding: 10px 20px;
+    border-radius: 20px;
+    border: 1px solid #b19576;
+    background-color: #ffffff;
+    color: #b19576;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    margin: 0 5px;
+}
+
+.sort-option.active {
+    background-color: #b19576;
+    color: #ffffff;
+}
+
+.sort-option:hover:not(.active) {
+    background-color: #f0f0f0;
+}
+
+.book-catalog {
+             display: flex;
+             flex-wrap: wrap;
+             gap: 20px;
+             justify-content: center;
+         }
+
+         .book-item {
+             border: 1px solid #ccc;
+             border-radius: 10px;
+             padding: 10px;
+             width: 200px;
+             text-align: center;
+             background-color: #ffffff;
+         }
+
+         .book-item img {
+             max-width: 100%;
+             border-radius: 10px;
+         }
+
+.pagination {
+    display: flex;
+    justify-content: center; /* Центрируем элементы */
+    margin: 20px;
+}
+
+.pagination form {
+    display: flex;
+    justify-content: space-between; /* Распределение пространства между кнопками */
+    align-items: center; /* Выравнивание элементов по вертикали */
+    width: 100%; /* Занимает всю доступную ширину */
+}
+
+.page-option {
+    padding: 8px 16px;
+    border-radius: 10px; /* Менее закругленные края */
+    border: 1px solid #b19576;
+    background-color: #ffffff;
+    color: #b19576;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    margin: 0 5px;
+}
+.page-option:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+.page-option:hover:not(:disabled) {
+    background-color: #f0f0f0;
+}

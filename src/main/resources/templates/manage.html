@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:data-th="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Book Store</title>
+    <link rel="stylesheet" type="text/css" media="all"
+          href="../static/css/common.css" data-th-href="@{/css/common.css}" />
+    <link rel="stylesheet" type="text/css" media="all"
+          href="../static/css/book.css" data-th-href="@{/css/manage.css}" />
+</head>
+<body>
+<header>
+    <div class="logo">
+        <a href="/">
+            <img src="../images/logo.png" alt="Logo">
+        </a>
+    </div>
+    <div class="search-bar">
+        <form th:action="@{/search}" method="get">
+            <input type="text" name="pattern" placeholder="Искать книги..." required>
+            <button type="submit" class="search-button">
+                <img src="../images/glass.png" alt="Search">
+            </button>
+        </form>
+    </div>
+
+    <div class="header-buttons">
+        <!-- Первая картинка с выпадающим меню -->
+        <div class="dropdown">
+            <button class="header-btn">
+                <img src="../images/account.png" alt="Icon 1">
+            </button>
+            <div class="dropdown-content">
+                <div th:if="${user==null}">
+                    <p>Guest</p>
+                    <a href="/login">Login</a>
+                </div>
+                <div th:unless="${user==null}">
+                    <p th:text="${user.getUsername}"></p>
+                    <p th:text="${user.getEmail}"></p>
+                    <div th:if="${user.role == 'ROLE_ADMIN'}">
+                        <a href="/manage">manage</a>
+                    </div>
+                    <div th:if="${user.role == 'ROLE_SUPPLIER'}">
+                        <a href="/supply">add new Book</a>
+                    </div>
+                    <a href="/logout">logout</a>
+                </div>
+            </div>
+        </div>
+        <!-- Вторая картинка как ссылка -->
+        <a href="/cart" class="header-btn">
+            <img src="../images/cart.png" alt="Icon 2">
+        </a>
+    </div>
+</header>
+<main>
+    <div class="manage-container">
+        <div class="manage-section">
+            <h2>Удалить профиль</h2>
+            <div class="centered-search">
+                <form th:action="@{/manage/delete}" method="get">
+                    <input type="text" name="pattern" placeholder="Search for users..." required>
+                    <input type="hidden" name="searching" value="user">
+                    <button type="submit" style="display: none;"></button> <!-- скрытая кнопка для отправки формы -->
+                </form>
+            </div>
+        </div>
+        <div class="manage-section">
+            <h2>Удалить книгу</h2>
+            <div class="centered-search">
+                <form th:action="@{/manage/delete}" method="get">
+                    <input type="text" name="pattern" placeholder="Search for books..." required>
+                    <input type="hidden" name="searching" value="book">
+                    <button type="submit" style="display: none;"></button> <!-- скрытая кнопка для отправки формы -->
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="large-section">
+        <h2>Управление</h2>
+        <div th:if="${users!=null}">
+            <div th:each="user:${users}" class="sub-section">
+                <img src="../images/account.png" alt="User Image">
+                <div class="text">
+                    <p th:text="${user.username}">Имя пользователя</p>
+                </div>
+                <form th:method="POST" th:action="@{deleteUser}">
+                    <button type="submit" class="delete-button">
+                        <img src="../images/trashCan.png" alt="Delete Icon">
+                        <input type="hidden" name="id" th:value="${user.id}">
+                    </button>
+                </form>
+
+            </div>
+        </div>
+
+        <div th:if="${books!=null}">
+            <div th:each="book:${books}" class="sub-section">
+                <img th:src="@{${'../images/books/' + book.url + '.png'}}" th:alt="${'Book ' + book.id}">
+                    <div class="text">
+                        <p th:text="${book.name}">Название книги</p>
+                    </div>
+                <form th:method="POST" th:action="@{deleteBook}">
+                    <button type="submit" class="delete-button">
+                        <img src="../images/trashCan.png" alt="Delete Icon">
+                        <input type="hidden" name="id" th:value="${book.id}">
+
+                    </button>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</main>
+<footer>
+    <p>Contact us at: contact@bookstore.com</p>
+</footer>
+</body>
+</html>
